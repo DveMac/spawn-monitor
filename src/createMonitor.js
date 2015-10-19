@@ -8,7 +8,7 @@ type MonitorConfig = {
   key: string,
   env?: string,
   onListening?: Function,
-  rebootOnChange?: Array<string>,
+  watchDirectory?: string
 };
 
 export default function createMonitor(opts: MonitorConfig) {
@@ -17,6 +17,8 @@ export default function createMonitor(opts: MonitorConfig) {
     max: 1,
     command: './node_modules/.bin/babel-node --harmony',
     env: opts.env,
+    watch: !!opts.watchDirectory,
+    watchDirectory: opts: watchDirectory
   });
 
   const onListening: ?Function = opts.onListening;
